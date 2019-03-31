@@ -3,10 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+
 </head>
-<body>
+
+<body onload="startGame();">
+<h1>Tic Tac Toe</h1>
+<div id="prompt"></div>
+
+<div class="gameboard">
+  	<div class="gridBox" onclick="nextTurn(this);" id="1"></div>
+	<div class="gridBox" onclick="nextTurn(this);" id="2"></div>
+	<div class="gridBox" onclick="nextTurn(this);" id="3"></div>
+	<div class="gridBox" onclick="nextTurn(this);" id="4"></div>
+	<div class="gridBox" onclick="nextTurn(this);" id="5"></div>
+	<div class="gridBox" onclick="nextTurn(this);" id="6"></div>
+	<div class="gridBox" onclick="nextTurn(this);" id="7"></div>
+	<div class="gridBox" onclick="nextTurn(this);" id="8"></div>
+	<div class="gridBox" onclick="nextTurn(this);" id="9"></div>
+	</div>
+<div class="center">
+	<button class="buttonClear" onclick="resetGame();">CLEAR BOARD</button>
+</div>
 
 </body>
+
+
 </html>

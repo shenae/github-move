@@ -1,0 +1,58 @@
+/* Make the Tic Tac Toe pretty */
+body{
+	max-width: 650px;
+	height: 700px;
+	background-color: yellow;
+	font-family: monospace;
+}
+h1{
+	font-family: monospace;
+	text-align: center;
+	font-size: 45px;
+	color: purple;
+}
+#prompt{
+	font-weight: bold;
+	font-size: 30px;
+	font-family: monospace;
+	text-align: center;
+	padding: 5px;
+	color: purple;
+}
+.center{
+	padding-top: 10px;
+	text-align: center;
+}
+
+.buttonClear{
+	margin: 0 auto;
+	width: 100px;
+	height: 35px;
+	border-radius: 25px;	
+}
+
+.gameboard{
+	display: grid;
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+    grid-template: repeat(3, 33%)/repeat(3, 33%);
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    grid-gap: 5px purple;
+    text-decoration-line: 5px solid purple;
+}
+
+.gridBox{
+	width: 200px;
+	height: 200px;
+	box-sizing: border-box;
+	border: 3px solid purple;
+	font-family: monospace;
+	/*float: center;*/
+	font-size: 75px;
+	font-weight: 900px;
+	align-self: center;
+	text-align: center;
+	justify-content: center;
+}
