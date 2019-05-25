@@ -1,26 +1,37 @@
-// Make clear button/reset button (clearInterval or removeClass)
-//style.backgroundColor etc for X and O when played ???
 
+//list winning combos in array
+let board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 
-let buttonClear = document.querySelector('.buttonClear');
-
-function resetGame() {
-	document.getElementById("gridBox").reset();
-}
+const winningArray = [
+[0,1,2],
+[3,4,5],
+[6,7,8],
+[0,3,6],
+[1,4,7],
+[2,5,8],
+[0,4,8],
+[2,4,6]
+];
 
 function startGame() {
 	document.turn = "X";
 	displayPrompt(document.turn + " goes first");
 }
-
+//display who is playing
 function displayPrompt(prompt) {
 document.getElementById('prompt').innerText = prompt;
 }
 
+//display which player's turn it is
+//track clicks
 function nextTurn(gridBox) {
+	console.log(gridBox.id)
 	if(gridBox.innerText == "") {
-	gridBox.innerText = document.turn;
-	switchPlayers();
+		board[gridBox.id] = document.turn;
+		console.log(board);
+		gridBox.innerText = document.turn;
+		switchPlayers();
+		checkForWinner();
 	} else {
 		displayPrompt("Pick another square");
 	}	
@@ -35,55 +46,25 @@ function switchPlayers() {
 	displayPrompt("Play on Player " + document.turn);
 }
 
-	// let gameBoard = document.querySelector('.gameboard');
-	// gameBoard = Array.from(Array(9).keys());
-	// for(let i = 1; i < grid-box.length; i++) {
-	// 	grid-box[i].innerText = '';
-// 	// 	grid-box[i].addEventListener('click', playerTurn, false);
-// 	}
+//check for winner by seeing if winning array matched board index placement
+const checkForWinner = () => 
+		winningArray.map(e => {
+			if(
+				(board[e[0]] === 'X' && board[e[1]] === 'X' && board[e[2]]=== 'X')|| 
+				(board[e[0]] === 'O' && board[e[1]] === 'O' && board[e[2]]=== 'O')
+				)
+			{
+				displayPrompt(`Player ${board[e[0]]} is the winner!`);
+			}	
+			if (!board.includes(' ') && board.length === 9) {
+				displayPrompt(`It's a tie!!`);
+			}
 
-// }
-
-//list winning combos in array, one for each color
-// let result = false;
-
-const winningArray = [
-[1,2,3],
-[4,5,6],
-[7,8,9],
-[1,4,7],
-[2,5,8],
-[3,6,9],
-[1,5,9],
-[3,5,7]
-];
-
-
-//display which player's turn it is
-
-//track winner by checking for winning array
-// let player1Array = ;
-// let player2Array = ;
-
-//alert window for winner
-const checkForWinner = () => {
-    if(playerXArray == winningArray.filter) {
-      alert('PLAYER X IS THE WINNER!!');
-    } else if (playerOArray == winningArray.filter) {
-    	alert('PLAYER O IS THE WINNER!!');
-    } else {
-    	alert('IT\'S A TIE!?!');
-    }
-  };
-// startGame();
-//make function for onclick x and o
-// let a = 1;
-// 
-// function startGame(){
-// if(a = 1){
-//    document.getElementById('').innerHTML='X';
-// }else{
-//    document.getElementById('').innerHTML='O';
-// }
-// a=0;
-// }
+		});
+	//for loop of to clear the gridbox array	
+const resetGame = () => {
+	let gridBoxes = document.querySelectorAll(".gridBox")
+	for(i=0;i<gridBoxes.length;i++){
+		gridBoxes[i].innerText = "";
+	}
+};
